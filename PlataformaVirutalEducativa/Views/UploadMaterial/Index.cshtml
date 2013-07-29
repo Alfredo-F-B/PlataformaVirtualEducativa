@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>*@
+<script src="~/Scripts/jquery-1.7.1.js"></script>
+<link href="~/Content/dropzone.css" rel="stylesheet" />
+<script src="~/Scripts/dropzone.js">
+
+</script>
+<script>
+    $(document).ready(function () {
+        var myDropzone = new Dropzone("div#myId", {
+            url: "/UploadMaterial/SaveFiles",
+            paramName: "file",
+            maxFilesize: 200, // MB
+            accept: function (file, done) {
+                done();
+            },
+            complete: function (data, r) {
+                //console.log(r.filename);
+                //$.post("/UploadMaterial/guardar",
+                //    r,
+                //function (respuesta) {
+
+                //},"json");
+            }
+        });
+    })
+
+</script>
+<h2>Index</h2>
+
+<div id="myId" class="dropzone">
+
+</div>
+    <p>
+        @Html.ActionLink( "Descargar material","getArchivos") 
+    </p>
+

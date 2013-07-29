@@ -1,0 +1,23 @@
+﻿@model IEnumerable<PlataformaVirutalEducativa.Models.Usuario>
+
+@{
+    ViewBag.Title = "mostrarusuariosarchivos";
+}
+
+<h2>mostrarusuariosarchivos</h2>
+<ul>
+    @foreach (var item in Model) 
+    {
+        <li>
+            @item.Nombres 
+            <ul>
+                @foreach (var archivos in item.Material) 
+                {
+                    <li>
+                        @archivos.UrlWeb
+                    </li>
+                }
+            </ul>
+        </li>    
+    }
+</ul>

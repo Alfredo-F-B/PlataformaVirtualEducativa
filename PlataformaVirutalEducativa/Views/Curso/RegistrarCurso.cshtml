@@ -1,0 +1,66 @@
+﻿@model PlataformaVirutalEducativa.Models.Curso
+
+@{
+    ViewBag.Title = "RegistrarCurso";
+}
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset class="contenidofor">
+        <h1 class="cabeza">RegistrarCurso</h1>
+        <legend>Curso</legend>
+            <div class="formula">
+                <ul>
+                    <li>@Html.LabelFor(model => model.Titulo)</li>
+                    <li>@Html.EditorFor(model => model.Titulo)</li>
+                    <li>@Html.ValidationMessageFor(model => model.Titulo)</li>
+                </ul>
+                <ul>
+                    <li>@Html.LabelFor(model => model.Categoria)</li>
+                    <li>
+                        <select id="Categoria" name="Categoria" class="ComboBox">
+                            <option> </option>
+                            <option>Arte y Humanidades</option>
+                            <option>Ciencia</option>
+                            <option>Matematicas</option>
+                            <option>Negocios y Finanzas</option>
+                            <option>Programacion</option>
+                            <option>Reposteria</option>
+                        </select>
+                    </li>
+                </ul>
+                <ul>
+                    <li>@Html.LabelFor(model => model.Descripcion)</li>
+                    <li>@Html.EditorFor(model => model.Descripcion)</li>
+                    <li>@Html.ValidationMessageFor(model => model.Descripcion)</li>
+                </ul>
+                <ul>
+                    <li>@Html.LabelFor(model => model.Inicio)</li>
+                    <li><input type="date" name="inicio"></li>
+                </ul>
+                <ul>
+                    <li>@Html.LabelFor(model => model.Duracion)</li>
+                    <li>@Html.EditorFor(model => model.Duracion)</li>
+                    <li>@Html.ValidationMessageFor(model => model.Titulo)</li>
+                </ul>
+                <ul>
+                    <li>@Html.LabelFor(model => model.Cupo)</li>
+                    <li>@Html.EditorFor(model => model.Cupo)</li>
+                    <li>@Html.ValidationMessageFor(model => model.Cupo)</li>
+                </ul> 
+            </div>
+        <p class="editor-field">
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

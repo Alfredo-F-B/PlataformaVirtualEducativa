@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Precursos";
+}
+
+<h2 class="cabeza">Lista de Cursos</h2>
+@foreach (var item in ViewBag.info) 
+            {
+                <ul class="formulario">
+                    <li class="bloque">      
+                        <table class="contenido">
+                            <tr>
+                                <th class="titulo">@item.titulocurso </th>
+                            </tr>
+                            <tr>
+                                <th class="descripcion">@item.descripcioncurso </th>
+                            </tr>
+                            <tr class="autor">
+                                <th>A cargo de:</th>
+                            </tr>
+                            <tr>
+                                <th class="descripcion">
+                                    @foreach (var itemautor in ViewBag.autor) 
+                                    {
+                                        if (@item.idusuario == @itemautor.idusuario) 
+                                        {
+                                            @itemautor.appaternousuario
+                                            <b> </b>
+                                            @itemautor.apmaternousuario
+                                            <b>, </b> 
+                                            @itemautor.nombresusuario   
+                                        }              
+                                    }
+                                </th>
+                            </tr>
+                            <tr class="detalle">
+                                <th ><a href="/Curso/MostrarCurso/@item.idcurso">Ver más...</a></th>
+                            </tr>
+                        </table>      
+                    </li>          
+                </ul>
+            }    

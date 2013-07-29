@@ -1,0 +1,121 @@
+﻿@model PlataformaVirutalEducativa.Models.RegisterModel
+@{
+    ViewBag.Title = "SI AUN NO TIENE CUENTA REGISTRESE AQUI...";
+}
+
+<hgroup  class="registrarse">
+    <h1 >@ViewBag.Title.</h1>
+</hgroup>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+
+    <fieldset class="contenidofor">
+        <legend>Formulario de registro</legend>
+        <b  class="titulofor">DATOS DE LA CUENTA</b>
+        <div class="formulacuenta">
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName)
+                    @Html.ValidationMessageFor(model => model.UserName)
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(model => model.Password)
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.ConfirmPassword)
+                    @Html.PasswordFor(m => m.ConfirmPassword)
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                </li>
+            </ul>
+        </div>
+        <b class="titulofor">DATOS PERSONALES</b>
+        <div class="formula">   
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.nombres)
+                    @Html.TextBoxFor(m => m.nombres)
+                    @Html.ValidationMessageFor(model => model.nombres)
+                </li>
+            </ul>       
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.appaterno)
+                    @Html.TextBoxFor(m => m.appaterno)
+                    @Html.ValidationMessageFor(model => model.appaterno)
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.apmaterno)
+                    @Html.TextBoxFor(m => m.apmaterno)
+                    @Html.ValidationMessageFor(model => model.apmaterno)
+                </li>
+            </ul>
+        </div>
+        <div  class="formulacuenta">
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.ci)
+                    @Html.TextBoxFor(m => m.ci)
+                    @Html.ValidationMessageFor(model => model.ci)
+                </li>
+            </ul>
+        </div>
+        <div class="formulacuenta">
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.sexo)
+                            <select id="Sexo" name="Sexo" class="ComboBox">
+                                <option> </option>
+                                <option>Hombre</option>
+                                <option>Mujer</option>
+                            </select>
+                    @Html.ValidationMessageFor(model => model.sexo)
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.fechanacimiento)
+                    <input type="date" name="fechanacimiento">
+                    @Html.ValidationMessageFor(model => model.fechanacimiento)
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.direccion)
+                    @Html.TextBoxFor(m => m.direccion)
+                    @Html.ValidationMessageFor(model => model.direccion)
+                </li>
+            </ul>           
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.telefono)
+                    @Html.TextBoxFor(m => m.telefono)
+                    @Html.ValidationMessageFor(model => model.telefono)
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.celular)
+                    @Html.TextBoxFor(m => m.celular)
+                    @Html.ValidationMessageFor(model => model.celular)
+                </li>
+            </ul>
+        </div>
+        <ol class="registrarse"><input type="submit" value="Registrarse" /></ol>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

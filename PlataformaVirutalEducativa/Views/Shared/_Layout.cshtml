@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Plataforma Virtual Educativa</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            @*@if (ViewBag.Menus != null)
+                            {
+                                  foreach (var item in ViewBag.Menus)
+                                {
+                                        if (@item.label == "CrearRol")
+                                        {
+                                            <li>@Html.ActionLink("Agregar Rol", "CrearRoles", "Admin")</li>
+                                        }
+                                        if (@item.label == "AsignarRol")
+                                        {
+                                            <li>@Html.ActionLink("Asignar Rol", "AsignarRolesUsuario", "Admin")</li>
+                                        }
+                                        if (@item.label == "CrearCurso")
+                                        {
+                                            <li>@Html.ActionLink("Registrar Cursos", "RegistrarCurso", "Curso")</li>
+                                        }
+                                        if (@item.label == "VerCurso")
+                                        {
+                                            <li>@Html.ActionLink("Mostrar Curso", "Precursos", "Curso")</li>
+                                        }
+                                        if (@item.label == "VerChat")
+                                        {
+                                            <li>@Html.ActionLink("CHAT", "Principal", "Home")</li>
+                                        }
+                                        if (@item.label == "VerUsuarios")
+                                        {
+                                            <li>@Html.ActionLink("Usuarios", "MostrarUsuario", "Usuario")</li>
+                                        }
+                                        @*<a href="/">@item.label</a>
+                                }
+                            }*@
+                                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+
+                                            <li>@Html.ActionLink("About", "About", "Home")</li>
+
+                                            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+
+                                            <li>@Html.ActionLink("SubirArchivo", "Index", "UploadMaterial")</li>
+
+                            <li>@Html.ActionLink("Mis Cursos", "MisCursos", "Curso")</li>
+                            <li>@Html.ActionLink("Agregar Rol", "CrearRoles", "Admin")</li>
+                            <li>@Html.ActionLink("Asignar Rol", "AsignarRolesUsuario", "Admin")</li>
+                            <li>@Html.ActionLink("Registrar Cursos", "RegistrarCurso", "Curso")</li>
+                            <li>@Html.ActionLink("Lista Inscritos", "MostrarUsuario", "Usuario")</li>
+                            <li>@Html.ActionLink("Mostrar Curso", "Precursos", "Curso")</li>
+                            <li>@Html.ActionLink("Ultimos Cursos Registrados", "MostrarUsuario", "Usuario")</li>
+                            <li>@Html.ActionLink("CHAT", "Principal", "Home")</li>
+                            <li>@Html.ActionLink("Usuarios", "MostrarUsuario", "Usuario")</li>
+                            
+                        </ul>
+                    </nav>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+
+    </body>
+</html>

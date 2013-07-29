@@ -1,0 +1,23 @@
+﻿@model PlataformaVirutalEducativa.Models.InscripcionActions
+
+@{
+    ViewBag.Title = "Salas";
+}
+
+<h2>Salas</h2>
+<table>
+
+    @foreach (var itemsesion in ViewBag.sesion) 
+    {
+        if (@itemsesion.idcurso == ViewBag.idcurso) 
+        {
+            <tr>
+                <td>@itemsesion.idsesion</td>
+                <td>@itemsesion.idcurso</td>
+                <td>@itemsesion.Nombre</td>
+                <td><b  class="titulorol">@itemsesion.Nombre</b> <a href="/Home/Principal/@itemsesion.idsesion"> INGRESAR AL CHAT</a></td>
+            </tr>
+        }              
+    }
+
+</table>

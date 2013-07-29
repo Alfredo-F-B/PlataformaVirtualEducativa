@@ -1,0 +1,200 @@
+﻿@model PlataformaVirutalEducativa.Models.Inscripcion
+@{
+    ViewBag.Title = "MostrarCurso";
+}
+
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        window.setInterval(function () {
+            $.post("/Curso/getUsuarios", {},
+                function (data) {
+                    var i = 0;
+                    //Usuarios
+                    html = "";
+                    for (i; i < data.lista.length; i++)
+                    {
+                        html += "<li>";
+                        html += "<img src=/images/msn.jpg>"
+                        html += data.lista[i];
+                        html += "</li>";
+                    }
+                    $(".Usuarios ul").html(html);
+                }, "json");
+
+            $.post("/Curso/getMensajes", {},
+            function (data) {
+                console.log(data.lista);
+                var i = data.lista.length-1;
+                html = "";
+                for (i; i >= 0; i--) {
+                    html += "<li>";
+                    html += "<b class=nickmsn>" + data.lista[i].nick + ": </b>";
+                    if (data.lista[i].mes < 1) {
+                        if (data.lista[i].dia < 1) {
+                            if (data.lista[i].hora < 1) {
+                                if (data.lista[i].minutos < 1) {
+                                    html += "<b class=fecha>" + " hace segundos" + "</b>";
+                                }
+                                else {
+                                    html += "<b class=fecha>" + " Hace " + data.lista[i].minutos; + "</b>";
+                                    html += "<b class=fecha>" + " minutos" + "</b>";
+                                }
+                            }
+                            else {
+                                html += "<b class=fecha>" + " Hace " + data.lista[i].hora; + "</b>";
+                                html += "<b class=fecha>" + " hora" + "</b>";
+                            }
+                        }
+                        else {
+                            html += "<b class=fecha>" + " Hace " + data.lista[i].dia; + "</b>";
+                            html += "<b class=fecha>" + " dias" + "</b>";
+                        }
+                    }
+                    else
+                    {
+                        html += "<b class=fecha>" + " Hace " + data.lista[i].mes; + "</b>";
+                        html += "<b class=fecha>" + " mes" + "</b>";
+                    }
+                    html += "</li>";
+                    html += "<li>";
+                    html += "<b class=mess>" + data.lista[i].mmensaje + "</b>";
+                    html += "</li>";
+                }
+                $("#listaComentario").html(html);
+            }, "json");
+        }, 1000);
+        
+        $(this).keydown(function (e) {
+            
+            if (e.keyCode == 13)
+            {
+                if ($("#com").val() != "")
+                {
+                    $.post(
+                        "/Curso/Enviar",
+                        { "com1": $("#com").val(), "idUs": $("#id").val() },
+                        function (data) {
+                            console.log(data);
+                            $("#com").val("");
+                        },"json");
+                }
+            }
+        });
+    });
+</script>
+
+
+
+<h2 class="cabeza">Cursos</h2>
+<div class="cuadrado">
+    <div class="cuadradoizq">
+        <ul>
+            <li class="imag">
+            </li>
+            <li class="bloque2">
+                @foreach (var item in ViewBag.info2) 
+                {
+                   
+                    if (@item.idcurso == @ViewBag.idcurso)
+                    {
+                            <table class="contenido2">
+                                <tr>
+                                    <th class="titulocurso">CURSO  </th>
+                                    <th class="titulocurso">@item.titulocurso </th>
+                                    <th class="titulocurso">@ViewBag.idcurso</th>
+                                </tr>
+                                <tr>
+                                    <th class="titulovar">DESCRIPCION :  </th>
+                                    <th class="titulodato">@item.descripcioncurso </th>
+                                </tr>
+                                <tr>
+                                    <th class="titulovar">CATEGORIA :  </th>
+                                    <th class="titulodato">@item.categoriacurso </th>
+                                </tr>
+                                <tr>
+                                    <th class="titulovar">INICIO DE CLASES :  </th>
+                                    <th class="titulodato">@item.iniciocurso </th>
+                                </tr>
+                                <tr>
+                                    <th class="titulovar">DURACION DEL CURSO :  </th>
+                                    <th class="titulodato">@item.duracioncurso </th>
+                                </tr>
+                                <tr>
+                                    <th class="titulovar">CUPO :  </th>
+                                    <th class="titulodato">@item.cupocurso </th>
+                                </tr>
+                                <tr>
+                                    <th class="titulovar">CREACION DEL CURSO :  </th>
+                                    <th class="titulodato">@item.fechacurso </th>
+                                </tr>
+                                <tr>
+                                    <th class="titulovar">A CARGO DE :</th>
+                                    <th class="titulodato">
+                                        @foreach (var itemautor in ViewBag.autor2) 
+                                        {
+                                            if (@item.idusuario == @itemautor.idusuario) 
+                                                {
+                                                    @itemautor.appaternousuario
+                                                    <b> </b>
+                                                    @itemautor.apmaternousuario
+                                                    <b>, </b> 
+                                                    @itemautor.nombresusuario   
+                                                }              
+                                        }
+                                    </th>
+                                </tr>
+                                <tr >
+                                    <th class="botondesc" colspan="2" ><a href="/Inscripciones/inscripcion/@ViewBag.idcurso">Inscribirse</a>@*<input type="submit" value="Inscribirse" />*@@*<a href="/Inscripciones/Inscripcion/@ViewBag.idcurso">Inscribase AQUI</a>*@</th>
+                                </tr>
+                                <tr>
+                                    <th class="botondesc"  colspan="2"><input type="button" value="Subir Archivo" /></th>
+                                </tr>
+                            </table>      
+                    }
+                } 
+            </li>
+            <li class="mate">
+                <table class="contenido2">
+                    <tr>
+                        <th  class="titulomat">Sentencias For</th>
+                        <th class="boton"><input type="button" value="Download" /></th>
+                    </tr>
+                    <tr>
+                        <th  class="titulomat">Sentencias While</th>
+                        <th class="boton"><input type="button" value="Download" /></th>
+                    </tr>
+                    <tr>
+                        <th  class="titulomat">Sentencias Do While</th>
+                        <th class="boton"><input type="button" value="Download"/></th>
+                    </tr>
+                    <tr>
+                        <th  class="titulomat">EJEMPLOS</th>
+                        <th class="boton"><input type="button" value="Download" /></th>
+                    </tr>
+                </table>
+                <input type="button" value="Descargar Todo" id="descargar" />
+            </li>
+
+            <li>
+                <a href="/Curso/CrearSala/@ViewBag.idcurso">Crear Sala</a>
+            </li>
+        </ul>
+    </div>
+
+
+
+    <div>
+        <div class="Comentario">
+            <ul id="listaComentario">
+            
+            </ul>
+        </div>
++
+        <input type="hidden" id="id" value="@ViewBag.id" />
+        <div class="MSN">
+                    <input type="text" id="com" name="com" placeholder="Escribe tu comentario AQUI"  />
+        </div>
+    </div>
+</div>

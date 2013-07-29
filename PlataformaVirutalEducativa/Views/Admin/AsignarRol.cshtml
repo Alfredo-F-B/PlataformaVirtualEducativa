@@ -1,0 +1,78 @@
+﻿@model PlataformaVirutalEducativa.Models.VistaRolesUsuario
+
+@{
+    ViewBag.Title = "AsignarRol";
+}
+<hgroup  class="registrarse">
+    <h1>Asignar Roles Usuario</h1>
+</hgroup>
+<fieldset class="contenidoforroles">
+    <legend>Asignacion de Roles</legend>
+    <div class="contenidofor">
+        <div class="formulacuentaroles">
+            <b  class="titulofor">Nombre: @Model.user.UserName</b>
+        </div>
+        <div class="formulacuentaroles">
+            <b  class="titulorol"> ROLES ASIGNADOS</b>
+            <ul>
+                    @foreach(var item in @Model.rolesUser)
+                    {
+                        foreach (var item2 in @ViewBag.rol)
+                        {
+                            if (item2.usersId == @Model.user.UserId && item2.rolesId==item.RoleId)
+                            {
+                                //muestra los permisos q tiene un usuario
+                                <li>
+                                    <b  class="titulorol">@item.RoleName</b> <a href="/Admin/AgregarRol/@Model.user.UserId|@item.RoleId">Quitar Rol</a>
+                                </li>                  
+                            } 
+                        }    
+                    }
+            </ul>
+        </div>
+        <div class="formulacuentaroles">
+            <b  class="titulorol"> ROLES CREADOS</b>
+            <ul>
+                @foreach (var itemrol in @ViewBag.rolname)
+                {
+                    <li>
+                        <b  class="titulorol">@itemrol.idrolname</b>
+                        <b  class="titulorol">@itemrol.rolname</b>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="formulacuentaroles">
+             <b  class="titulorol"> ROLES A ASIGNAR</b>
+            <ul> 
+                @using(Html.BeginForm()){      
+                    int columna1=0, columna2=0,contador=0;
+                    string nombre="";
+                    foreach(var itemrol in @ViewBag.rol)
+                    {
+                        columna1 = itemrol.rolesId;
+                        <li>
+                           @columna1
+                        </li>
+                        foreach (var itemrol2 in @ViewBag.rolname)
+                        {
+                             
+                            if (itemrol.usersId == @Model.user.UserId && itemrol.rolesId == itemrol2.idrolname)
+                           {
+                               columna2 = itemrol2.idrolname;
+                               nombre = itemrol2.rolname;
+                                if(contador<=0){
+                                    <li> @columna2</li>
+                                    contador = contador + 1;
+                                }
+                            }                           
+                        }
+                    }
+                    
+
+                    
+            }                        
+            </ul>
+        </div>
+    </div>
+</fieldset>

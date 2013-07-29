@@ -1,0 +1,40 @@
+﻿@model PlataformaVirutalEducativa.Models.UsuarioActions
+@{
+    ViewBag.Title = "MostrarUsuario";
+}
+
+<h2 class="editor-label">Usuarios Registrados</h2>
+
+<table class="editor-label">
+    <tr>
+            <th>Foto de Perfil</th>
+            <th>Nickname</th>
+            <th>Estado</th>
+            <th>CI</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Nombres</th>
+            <th>Sexo</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Celular</th>
+    </tr>
+    @foreach (var item in ViewBag.info) 
+    {
+        <tr>
+            <td><img src="/images/perfil.jpg"></td>
+            <td>@item.nicknameusuario</td>
+            <td>@item.estadousuario</td>
+            <td>@item.ciusuario</td>
+            <td>@item.appaternousuario</td>
+            <td>@item.apmaternousuario</td>
+            <td>@item.nombresusuario</td>
+            <td>@item.sexousuario</td>
+            <td>@item.fechanacimientousuario</td>
+            <td>@item.direccionusuario</td>
+            <td>@item.telefonousuario</td>
+            <td>@item.celularusuario</td>
+        </tr>        
+    }    
+</table>

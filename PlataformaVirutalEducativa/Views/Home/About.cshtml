@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Acerca de";
+}
+
+<hgroup class="registrarse">
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+<article class="contenidoabout">
+    <p  class="parrafoabout">
+        Una plataforma educativa es una herramienta ya sea física, virtual o una combinación físico-virtual, 
+        que brinda la capacidad de interactuar con uno o varios usuarios con fines pedagógicos. Además, 
+        se considera un proceso que contribuye a la evolución de los procesos de aprendizaje y enseñanza, 
+        que complementa o presenta alternativas en los procesos de la educación tradicional.
+    </p>
+
+    <p class="parrafoabout">
+        En la actualidad, la mayor parte de las plataformas educativas son programas computacionales (software) o equipos electrónicos (hardware).
+    </p>
+
+    <p class="parrafoabout">
+        Con la integración de la tecnología a nuestra forma de vida, es necesario plantear nuevas formas de interacción entre personal docentes y alumnos. Pero es tarea de importancia prioritaria que los profesores plasmen el contenido de forma eficaz, gestionando actividades de aprendizaje que contemplen los métodos clásicos con la ventaja de las aplicaciones de la Informática.
+    </p>
+    <p class="parrafoabout">
+        Lo que en gran medida nos lleva a pensar en la seguridad y garantías de aprendizaje de esta nueva estrategia, cabe resaltar que su instauración en los sistemas educativos es creciente debido a las demandas del mundo actual. Actualmente se utilizan diversas plataformas educativas dirigidas a procesos y ejecuciones en red de los métodos pedagógicos, entre los ejemplos que podemos encontrar están Web Course Tool (WebCT), Learningspace y Blackboard.
+    </p>
+    <p class="parrafoabout">
+        Es importante señalar que se debe ofrecer una herramienta que permita adaptación a las singularidades de cada metodología de estudio de las diversas áreas del conocimiento, ya que ésta es una de las piezas clave para la aceptación y rápida integración a los sistemas educativos (Rodríguez. Diéguez. Saénz Barrio. “Tecnología Educativa y Nuevas tecnologías aplicadas a la educación”. Alcoy, Marfil).
+    </p>
+</article>
+
+<aside  class="contenidoabout">
+    <p class="parrafoabout">
+        MENU ADICIONAL
+    </p>
+    <ul>
+        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+        <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+        <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+    </ul>
+</aside>

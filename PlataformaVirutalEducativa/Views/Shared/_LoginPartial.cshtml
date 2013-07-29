@@ -1,0 +1,21 @@
+﻿@if (Request.IsAuthenticated) {
+    <text>
+    <div class="menulogin">
+            <img src="/images/perfil.jpg">
+            ¡Hola, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Administrar" })!
+            @using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+            }
+    </div>
+    </text>
+} else {
+    <div class="menulogin">
+        <ul>
+            <li>@Html.ActionLink("Registrarse","Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>|</li>
+            <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+    </div>
+}

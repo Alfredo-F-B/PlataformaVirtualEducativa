@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="02a1f2a21ab14546bc09b1028af6a674" Name="Diagrama1" ZoomLevel="52">
+        <EntityTypeShape EntityType="PlataformaModel.Comentario" Width="1.5" PointX="7.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlataformaModel.Curso" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlataformaModel.Inscripcion" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlataformaModel.Material" Width="1.5" PointX="10.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlataformaModel.Mensaje" Width="1.5" PointX="10.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlataformaModel.Notificacion" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlataformaModel.Puntaje" Width="1.5" PointX="12" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlataformaModel.Respuesta" Width="1.5" PointX="9.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlataformaModel.Sesion" Width="1.5" PointX="5.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlataformaModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlataformaModel.Usuario" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlataformaModel.webpages_Membership" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlataformaModel.webpages_OAuthMembership" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlataformaModel.webpages_Roles" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlataformaModel.webpages_UsersInRoles" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="PlataformaModel.FK__Comentari__IdSes__7BE56230" ManuallyRouted="false" />
+        <AssociationConnector Association="PlataformaModel.FK__Comentari__IdUsu__7AF13DF7" ManuallyRouted="false" />
+        <AssociationConnector Association="PlataformaModel.FK__Respuesta__IdCom__056ECC6A" ManuallyRouted="false" />
+        <AssociationConnector Association="PlataformaModel.FK__Curso__IdUsuario__603D47BB" ManuallyRouted="false" />
+        <AssociationConnector Association="PlataformaModel.FK__Inscripci__IdCur__753864A1" ManuallyRouted="false" />
+        <AssociationConnector Association="PlataformaModel.FK__Notificac__IdCur__0EF836A4" ManuallyRouted="false" />
+        <AssociationConnector Association="PlataformaModel.FK__Sesion__IdCurso__6501FCD8" ManuallyRouted="false" />
+        <AssociationConnector Association="PlataformaModel.FK__Inscripci__IdUsu__762C88DA" ManuallyRouted="false" />
+        <AssociationConnector Association="PlataformaModel.FK__Material__IdSesi__7073AF84" ManuallyRouted="false" />
+        <AssociationConnector Association="PlataformaModel.FK__Material__IdUsua__6F7F8B4B" ManuallyRouted="false" />
+        <AssociationConnector Association="PlataformaModel.FK__Mensaje__IdSesio__6ABAD62E" ManuallyRouted="false" />
+        <AssociationConnector Association="PlataformaModel.FK__Mensaje__IdUsuar__69C6B1F5" ManuallyRouted="false" />
+        <AssociationConnector Association="PlataformaModel.FK__Puntaje__IdRespu__0A338187" ManuallyRouted="false" />
+        <AssociationConnector Association="PlataformaModel.fk_RoleId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

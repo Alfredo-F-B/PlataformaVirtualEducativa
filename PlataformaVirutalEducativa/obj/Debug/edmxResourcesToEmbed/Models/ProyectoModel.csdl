@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PlataformaModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PlataformaEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Comentario" EntityType="PlataformaModel.Comentario" />
+    <EntitySet Name="Curso" EntityType="PlataformaModel.Curso" />
+    <EntitySet Name="Inscripcion" EntityType="PlataformaModel.Inscripcion" />
+    <EntitySet Name="Material" EntityType="PlataformaModel.Material" />
+    <EntitySet Name="Mensaje" EntityType="PlataformaModel.Mensaje" />
+    <EntitySet Name="Notificacion" EntityType="PlataformaModel.Notificacion" />
+    <EntitySet Name="Puntaje" EntityType="PlataformaModel.Puntaje" />
+    <EntitySet Name="Respuesta" EntityType="PlataformaModel.Respuesta" />
+    <EntitySet Name="Sesion" EntityType="PlataformaModel.Sesion" />
+    <EntitySet Name="sysdiagrams" EntityType="PlataformaModel.sysdiagrams" />
+    <EntitySet Name="Usuario" EntityType="PlataformaModel.Usuario" />
+    <EntitySet Name="webpages_Membership" EntityType="PlataformaModel.webpages_Membership" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="PlataformaModel.webpages_OAuthMembership" />
+    <EntitySet Name="webpages_Roles" EntityType="PlataformaModel.webpages_Roles" />
+    <EntitySet Name="webpages_UsersInRoles" EntityType="PlataformaModel.webpages_UsersInRoles" />
+    <AssociationSet Name="FK__Comentari__IdSes__7BE56230" Association="PlataformaModel.FK__Comentari__IdSes__7BE56230">
+      <End Role="Sesion" EntitySet="Sesion" />
+      <End Role="Comentario" EntitySet="Comentario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comentari__IdUsu__7AF13DF7" Association="PlataformaModel.FK__Comentari__IdUsu__7AF13DF7">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Comentario" EntitySet="Comentario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Respuesta__IdCom__056ECC6A" Association="PlataformaModel.FK__Respuesta__IdCom__056ECC6A">
+      <End Role="Comentario" EntitySet="Comentario" />
+      <End Role="Respuesta" EntitySet="Respuesta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Curso__IdUsuario__603D47BB" Association="PlataformaModel.FK__Curso__IdUsuario__603D47BB">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Curso" EntitySet="Curso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inscripci__IdCur__753864A1" Association="PlataformaModel.FK__Inscripci__IdCur__753864A1">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="Inscripcion" EntitySet="Inscripcion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificac__IdCur__0EF836A4" Association="PlataformaModel.FK__Notificac__IdCur__0EF836A4">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="Notificacion" EntitySet="Notificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sesion__IdCurso__6501FCD8" Association="PlataformaModel.FK__Sesion__IdCurso__6501FCD8">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="Sesion" EntitySet="Sesion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inscripci__IdUsu__762C88DA" Association="PlataformaModel.FK__Inscripci__IdUsu__762C88DA">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Inscripcion" EntitySet="Inscripcion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Material__IdSesi__7073AF84" Association="PlataformaModel.FK__Material__IdSesi__7073AF84">
+      <End Role="Sesion" EntitySet="Sesion" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Material__IdUsua__6F7F8B4B" Association="PlataformaModel.FK__Material__IdUsua__6F7F8B4B">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Mensaje__IdSesio__6ABAD62E" Association="PlataformaModel.FK__Mensaje__IdSesio__6ABAD62E">
+      <End Role="Sesion" EntitySet="Sesion" />
+      <End Role="Mensaje" EntitySet="Mensaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Mensaje__IdUsuar__69C6B1F5" Association="PlataformaModel.FK__Mensaje__IdUsuar__69C6B1F5">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Mensaje" EntitySet="Mensaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Puntaje__IdRespu__0A338187" Association="PlataformaModel.FK__Puntaje__IdRespu__0A338187">
+      <End Role="Respuesta" EntitySet="Respuesta" />
+      <End Role="Puntaje" EntitySet="Puntaje" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RoleId" Association="PlataformaModel.fk_RoleId">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Comentario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IdSesion" Type="Int32" Nullable="false" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="Comentario1" Type="String" Nullable="false" MaxLength="400" Unicode="false" FixedLength="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Mes" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Dia" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Hora" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Minuto" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Segundo" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Sesion" Relationship="PlataformaModel.FK__Comentari__IdSes__7BE56230" FromRole="Comentario" ToRole="Sesion" />
+    <NavigationProperty Name="Usuario" Relationship="PlataformaModel.FK__Comentari__IdUsu__7AF13DF7" FromRole="Comentario" ToRole="Usuario" />
+    <NavigationProperty Name="Respuesta" Relationship="PlataformaModel.FK__Respuesta__IdCom__056ECC6A" FromRole="Comentario" ToRole="Respuesta" />
+  </EntityType>
+  <EntityType Name="Curso">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Categoria" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="400" Unicode="false" FixedLength="false" />
+    <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Duracion" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Cupo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="PlataformaModel.FK__Curso__IdUsuario__603D47BB" FromRole="Curso" ToRole="Usuario" />
+    <NavigationProperty Name="Inscripcion" Relationship="PlataformaModel.FK__Inscripci__IdCur__753864A1" FromRole="Curso" ToRole="Inscripcion" />
+    <NavigationProperty Name="Notificacion" Relationship="PlataformaModel.FK__Notificac__IdCur__0EF836A4" FromRole="Curso" ToRole="Notificacion" />
+    <NavigationProperty Name="Sesion" Relationship="PlataformaModel.FK__Sesion__IdCurso__6501FCD8" FromRole="Curso" ToRole="Sesion" />
+  </EntityType>
+  <EntityType Name="Inscripcion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdCurso" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Curso" Relationship="PlataformaModel.FK__Inscripci__IdCur__753864A1" FromRole="Inscripcion" ToRole="Curso" />
+    <NavigationProperty Name="Usuario" Relationship="PlataformaModel.FK__Inscripci__IdUsu__762C88DA" FromRole="Inscripcion" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdSesion" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="400" Unicode="false" FixedLength="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UrlAbs" Type="String" Nullable="false" MaxLength="400" Unicode="false" FixedLength="false" />
+    <Property Name="UrlWeb" Type="String" Nullable="false" MaxLength="400" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Sesion" Relationship="PlataformaModel.FK__Material__IdSesi__7073AF84" FromRole="Material" ToRole="Sesion" />
+    <NavigationProperty Name="Usuario" Relationship="PlataformaModel.FK__Material__IdUsua__6F7F8B4B" FromRole="Material" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Mensaje">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IdSesion" Type="Int32" Nullable="false" />
+    <Property Name="Msn" Type="String" Nullable="false" MaxLength="400" Unicode="false" FixedLength="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Mes" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Dia" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Hora" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Minuto" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Segundo" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Sesion" Relationship="PlataformaModel.FK__Mensaje__IdSesio__6ABAD62E" FromRole="Mensaje" ToRole="Sesion" />
+    <NavigationProperty Name="Usuario" Relationship="PlataformaModel.FK__Mensaje__IdUsuar__69C6B1F5" FromRole="Mensaje" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Notificacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCurso" Type="Int32" Nullable="false" />
+    <Property Name="Mensaje" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Estado" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Curso" Relationship="PlataformaModel.FK__Notificac__IdCur__0EF836A4" FromRole="Notificacion" ToRole="Curso" />
+  </EntityType>
+  <EntityType Name="Puntaje">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IdRespuesta" Type="Int32" Nullable="false" />
+    <Property Name="Valor" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Respuesta" Relationship="PlataformaModel.FK__Puntaje__IdRespu__0A338187" FromRole="Puntaje" ToRole="Respuesta" />
+  </EntityType>
+  <EntityType Name="Respuesta">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IdComentario" Type="Int32" Nullable="false" />
+    <Property Name="Texto" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Comentario" Relationship="PlataformaModel.FK__Respuesta__IdCom__056ECC6A" FromRole="Respuesta" ToRole="Comentario" />
+    <NavigationProperty Name="Puntaje" Relationship="PlataformaModel.FK__Puntaje__IdRespu__0A338187" FromRole="Respuesta" ToRole="Puntaje" />
+  </EntityType>
+  <EntityType Name="Sesion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCurso" Type="Int32" Nullable="false" />
+    <Property Name="NombreSesion" Type="String" Nullable="false" MaxLength="400" Unicode="false" FixedLength="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Comentario" Relationship="PlataformaModel.FK__Comentari__IdSes__7BE56230" FromRole="Sesion" ToRole="Comentario" />
+    <NavigationProperty Name="Curso" Relationship="PlataformaModel.FK__Sesion__IdCurso__6501FCD8" FromRole="Sesion" ToRole="Curso" />
+    <NavigationProperty Name="Material" Relationship="PlataformaModel.FK__Material__IdSesi__7073AF84" FromRole="Sesion" ToRole="Material" />
+    <NavigationProperty Name="Mensaje" Relationship="PlataformaModel.FK__Mensaje__IdSesio__6ABAD62E" FromRole="Sesion" ToRole="Mensaje" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUserRoles" Type="Int32" Nullable="false" />
+    <Property Name="Nickname" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Repass" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Estado" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="CI" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+    <Property Name="ApPaterno" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="ApMaterno" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Nombres" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Sexo" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Direccion" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Telefono" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="Celular" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Comentario" Relationship="PlataformaModel.FK__Comentari__IdUsu__7AF13DF7" FromRole="Usuario" ToRole="Comentario" />
+    <NavigationProperty Name="Curso" Relationship="PlataformaModel.FK__Curso__IdUsuario__603D47BB" FromRole="Usuario" ToRole="Curso" />
+    <NavigationProperty Name="Inscripcion" Relationship="PlataformaModel.FK__Inscripci__IdUsu__762C88DA" FromRole="Usuario" ToRole="Inscripcion" />
+    <NavigationProperty Name="Material" Relationship="PlataformaModel.FK__Material__IdUsua__6F7F8B4B" FromRole="Usuario" ToRole="Material" />
+    <NavigationProperty Name="Mensaje" Relationship="PlataformaModel.FK__Mensaje__IdUsuar__69C6B1F5" FromRole="Usuario" ToRole="Mensaje" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ConfirmationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="IsConfirmed" Type="Boolean" />
+    <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="webpages_UsersInRoles" Relationship="PlataformaModel.fk_RoleId" FromRole="webpages_Roles" ToRole="webpages_UsersInRoles" />
+  </EntityType>
+  <EntityType Name="webpages_UsersInRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="webpages_Roles" Relationship="PlataformaModel.fk_RoleId" FromRole="webpages_UsersInRoles" ToRole="webpages_Roles" />
+  </EntityType>
+  <Association Name="FK__Comentari__IdSes__7BE56230">
+    <End Role="Sesion" Type="PlataformaModel.Sesion" Multiplicity="1" />
+    <End Role="Comentario" Type="PlataformaModel.Comentario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sesion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comentario">
+        <PropertyRef Name="IdSesion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comentari__IdUsu__7AF13DF7">
+    <End Role="Usuario" Type="PlataformaModel.Usuario" Multiplicity="1" />
+    <End Role="Comentario" Type="PlataformaModel.Comentario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comentario">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Respuesta__IdCom__056ECC6A">
+    <End Role="Comentario" Type="PlataformaModel.Comentario" Multiplicity="1" />
+    <End Role="Respuesta" Type="PlataformaModel.Respuesta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comentario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Respuesta">
+        <PropertyRef Name="IdComentario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Curso__IdUsuario__603D47BB">
+    <End Role="Usuario" Type="PlataformaModel.Usuario" Multiplicity="1" />
+    <End Role="Curso" Type="PlataformaModel.Curso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Curso">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inscripci__IdCur__753864A1">
+    <End Role="Curso" Type="PlataformaModel.Curso" Multiplicity="1" />
+    <End Role="Inscripcion" Type="PlataformaModel.Inscripcion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Inscripcion">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificac__IdCur__0EF836A4">
+    <End Role="Curso" Type="PlataformaModel.Curso" Multiplicity="1" />
+    <End Role="Notificacion" Type="PlataformaModel.Notificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notificacion">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sesion__IdCurso__6501FCD8">
+    <End Role="Curso" Type="PlataformaModel.Curso" Multiplicity="1" />
+    <End Role="Sesion" Type="PlataformaModel.Sesion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sesion">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inscripci__IdUsu__762C88DA">
+    <End Role="Usuario" Type="PlataformaModel.Usuario" Multiplicity="1" />
+    <End Role="Inscripcion" Type="PlataformaModel.Inscripcion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Inscripcion">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Material__IdSesi__7073AF84">
+    <End Role="Sesion" Type="PlataformaModel.Sesion" Multiplicity="1" />
+    <End Role="Material" Type="PlataformaModel.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sesion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="IdSesion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Material__IdUsua__6F7F8B4B">
+    <End Role="Usuario" Type="PlataformaModel.Usuario" Multiplicity="1" />
+    <End Role="Material" Type="PlataformaModel.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Mensaje__IdSesio__6ABAD62E">
+    <End Role="Sesion" Type="PlataformaModel.Sesion" Multiplicity="1" />
+    <End Role="Mensaje" Type="PlataformaModel.Mensaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sesion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mensaje">
+        <PropertyRef Name="IdSesion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Mensaje__IdUsuar__69C6B1F5">
+    <End Role="Usuario" Type="PlataformaModel.Usuario" Multiplicity="1" />
+    <End Role="Mensaje" Type="PlataformaModel.Mensaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mensaje">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Puntaje__IdRespu__0A338187">
+    <End Role="Respuesta" Type="PlataformaModel.Respuesta" Multiplicity="1" />
+    <End Role="Puntaje" Type="PlataformaModel.Puntaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Respuesta">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Puntaje">
+        <PropertyRef Name="IdRespuesta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RoleId">
+    <End Role="webpages_Roles" Type="PlataformaModel.webpages_Roles" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="PlataformaModel.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webpages_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

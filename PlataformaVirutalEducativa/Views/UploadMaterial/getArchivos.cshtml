@@ -1,0 +1,61 @@
+﻿@model IEnumerable<PlataformaVirutalEducativa.Models.Material>
+@{
+    ViewBag.Title = "getArchivos";
+}
+
+<script src="~/Scripts/jquery-1.7.1.js">
+
+</script>
+<script>
+    $(document).ready(function () {
+        $(".descargar").click(function (e) {
+            e.preventDefault();
+            //console.log("Testing");
+            $(".linkdescarga").html("<b>Procesando Descarga...</b>");
+            $.post($(this).attr("href"), {}, function (data) {
+                $(".linkdescarga").html("<a href='"+data.link+"'>Descarga Lista</a>");
+            },"json");
+        });
+    });
+</script>
+
+<h2>getArchivos</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            ID USUARIO
+        </th>
+        <th>
+            URLABS
+        </th>
+        <th>
+            URLWEB
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrlAbs)
+        </td>
+        <td>
+            <a href="@Html.DisplayFor(modelItem => item.UrlWeb)">@Html.DisplayFor(modelItem => item.UrlWeb)</a> 
+        </td>
+    </tr>
+}
+
+</table>
+    <a href="/UploadMaterial/Descargartodo/" class="descargar">Descargar Todos los Archivos</a>
+
+<div class="linkdescarga">
+
+</div>
+
+

@@ -1,0 +1,49 @@
+﻿@model PlataformaVirutalEducativa.Models.Usuario
+
+@{
+    ViewBag.Title = "RegistrarUsuario";
+}
+
+<h2 class="editor-label">RegistrarUsuario</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>usuario</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nickname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nickname)
+            @Html.ValidationMessageFor(model => model.Nickname) 
+            @if (@ViewBag.error != null) {
+                @ViewBag.error
+            }
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password) @ViewBag.pass
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Repass)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Repass)
+            @Html.ValidationMessageFor(model => model.Repass)
+        </div>
+        <p class="editor-label">
+            <input type="submit" value="Registrarse" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

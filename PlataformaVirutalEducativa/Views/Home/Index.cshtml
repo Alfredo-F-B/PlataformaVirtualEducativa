@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Your Page Title Here :)</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="stylesheets/base.css">
+	<link rel="stylesheet" href="stylesheets/skeleton.css">
+	<link rel="stylesheet" href="stylesheets/layout.css">
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+
+
+    <link href="stylesheets/layout.css" rel="stylesheet"/>
+    <script src="~/Scripts/jquery-1.7.1.min.js"> </script>
+    <script src="~/Scripts/jquery.slider.js"></script>
+    <script>
+        $(document).ready(function ($) {
+            $(".slideshow").slider();
+        });
+    </script>
+
+</head>
+<body>
+	<div class="container">
+@*                <div class="header">
+                    <ul>
+                        <li class="a">
+                            @Html.ActionLink("Registrar Cursos", "RegistrarCurso", "Curso")
+                        </li>
+                        <li class="a">
+                            @Html.ActionLink("Mostrar Curso", "Precursos", "Curso")
+                        </li>
+                        <li class="a">
+                            @Html.ActionLink("CHAT", "Principal", "Home")
+                        </li>
+                        <li class="a">
+                            @Html.ActionLink("Usuarios", "MostrarUsuario", "Usuario")
+                        </li>
+                    </ul>
+                </div>*@
+                <div class="slideshow">
+                     <div class="mask">
+                        <img src="/images/portada.jpg">
+                         <ul class="items">
+                            <li>
+                                <div>
+                                     <h1>CONOCIMIENTO</h1>
+                                 </div>
+                             </li>
+                             <li>
+                                 <div>
+                                     <h1>APRENDIZAJE</h1>
+                                 </div>
+                             </li>
+                             <li>
+                                 <div>
+                                     <h1>MATERIAL DIDÁCTICO</h1>
+                                 </div>
+                             </li>
+                             <li>
+                                 <div>
+                                     <h1>EQUIPAMIENTO</h1>
+                                 </div>
+                             </li>
+                             <li>
+                                 <div>
+                                     <h1>ENSEÑANZA</h1>
+                                 </div>
+                             </li>
+                             <li>
+                                 <div>
+                                     <h1>ASESORES CALIFICADOS</h1>
+                                 </div>
+                             </li>                           
+                         </ul>
+                     </div>
+                </div>
+                <div class="foother">
+                    <div class="footherizq">
+                        DEJA TU COMENTARIO
+                        <div class="contenedorchatindex">
+                            <input type="hidden" id="id" value="@ViewBag.id" />
+                            <div class="MSNindex">
+                                        <input type="text" id="msn" name="msn" placeholder="Escribe tu comentario AQUI"  />
+                            </div>
+                            <div class="Mensajesindex">
+                                <ul id="listaMensajesindex">
+            
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="footherder">
+                        @foreach (var item in ViewBag.info) 
+                        {
+                        <ul class="primero">
+                            <li class="primeroa">      
+                                <table>
+                                    <tr>
+                                        <th class="autorindex">
+                                            @foreach (var itemautor in ViewBag.autor) 
+                                            {
+                                                if (@item.idusuario == @itemautor.idusuario) 
+                                                {
+                                                    @itemautor.nombresusuario
+                                                    <b> </b>
+                                                    @itemautor.appaternousuario
+                                                    <b> </b>
+                                                    @itemautor.apmaternousuario   
+                                                    <b> </b>    
+                                                    <b>Acaba de Crear Un Nuevo Curso</b>                                           
+                                                }
+                                            }
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>@item.titulocurso </th>
+                                    </tr>
+                                    <tr>
+                                        <th>@item.descripcioncurso </th>
+                                    </tr>
+                               
+                                    <tr>
+                                        <th ><a href="/Curso/MostrarCurso/@item.idcurso">Ir Al Curso</a></th>
+                                    </tr>
+                                </table>      
+                            </li>       
+                        </ul>
+                        }
+                        <ul class="vermas">
+                                <li>@Html.ActionLink("Ver más", "Precursos", "Curso")</li>
+                        </ul> 
+                    </div>
+                </div>
+	</div><!-- container -->
+<!-- End Document
+================================================== -->
+</body>
+</html>

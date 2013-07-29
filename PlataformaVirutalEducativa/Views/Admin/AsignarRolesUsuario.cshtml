@@ -1,0 +1,26 @@
+﻿@model IEnumerable<PlataformaVirutalEducativa.Models.UserProfile>
+
+@{
+    ViewBag.Title = "AsignarRolesUsuario";
+}
+<hgroup  class="registrarse">
+    <h1>Asignar Roles Usuario</h1>
+</hgroup>
+
+<fieldset class="contenidoforroles">
+    <legend>Asignacion de Roles</legend>
+
+
+    @foreach (var item in Model) {
+    <div class="formulacuentaroles">
+        <ul>
+            <li>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </li>
+            <li>
+                @Html.ActionLink("Asignar Roles", "AsignarRol", new { id=item.UserId })
+            </li>
+        </ul>
+    </div>
+}
+</fieldset>

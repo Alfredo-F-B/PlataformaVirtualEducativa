@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "Principal";
+}
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        window.setInterval(function () {
+            $.post("/Home/getUsuarios", { "IdSesion": $("#idse").val() },
+                function (data) {
+                    var i = 0;
+                    //Usuarios
+                    html = "";
+                    for (i; i < data.lista.length; i++)
+                    {
+                        html += "<li>";
+                        html += "<img src=/images/msn.jpg>"
+                        html += data.lista[i];
+                        html += "</li>";
+                    }
+                    $(".Usuarios ul").html(html);
+                }, "json");
+
+            $.post("/Home/getMensajes", { "IdSesion": $("#idse").val() },
+            function (data) {
+                console.log(data.lista);
+                var i = data.lista.length-1;
+                html = "";
+                for (i; i >= 0; i--) {
+                    html += "<li>";
+                    html += "<b class=nickmsn>" + data.lista[i].nick + ": </b>";
+                    if (data.lista[i].mes < 1) {
+                        if (data.lista[i].dia < 1) {
+                            if (data.lista[i].hora < 1) {
+                                if (data.lista[i].minutos < 1) {
+                                    html += "<b class=fecha>" + " hace segundos" + "</b>";
+                                }
+                                else {
+                                    html += "<b class=fecha>" + " Hace " + data.lista[i].minutos; + "</b>";
+                                    html += "<b class=fecha>" + " minutos" + "</b>";
+                                }
+                            }
+                            else {
+                                html += "<b class=fecha>" + " Hace " + data.lista[i].hora; + "</b>";
+                                html += "<b class=fecha>" + " hora" + "</b>";
+                            }
+                        }
+                        else {
+                            html += "<b class=fecha>" + " Hace " + data.lista[i].dia; + "</b>";
+                            html += "<b class=fecha>" + " dias" + "</b>";
+                        }
+                    }
+                    else
+                    {
+                        html += "<b class=fecha>" + " Hace " + data.lista[i].mes; + "</b>";
+                        html += "<b class=fecha>" + " mes" + "</b>";
+                    }
+                    html += "</li>";
+                    html += "<li>";
+                    html += "<b class=mess>" + data.lista[i].mmensaje + "</b>";
+                    html += "</li>";
+                }
+                $("#listaMensajes").html(html);
+            }, "json");
+        }, 1000);
+        
+        $(this).keydown(function (e) {
+            
+            if (e.keyCode == 13)
+            {
+                if ($("#msn").val() != "")
+                {
+                    $.post(
+                        "/Home/Enviar",
+                        { "msn": $("#msn").val(), "idUs": $("#id").val(), "IdSesion": $("#idse").val() },
+                        function (data) {
+                            console.log(data);
+                            $("#msn").val("");
+                        },"json");
+                }
+            }
+        });
+
+        //, "IdSesion": $("#idse").val 
+    });
+</script>
+<div class="contenedorchat">
+    <div class="Mensajes">
+        <ul id="listaMensajes">
+            @ViewBag.idSesion
+        </ul>
+    </div>
+    <div class="Usuarios">
+        <ul>
+            @ViewBag.idSesion
+        </ul>
+    </div>
+    <input type="hidden" id="id" value="@ViewBag.id" />
+
+    <input type="hidden" id="idse" value="@ViewBag.idSesion" />
+    <div class="MSN">
+                <input type="text" id="msn" name="msn" placeholder="Escribe tu Mensaje AQUI" value="@ViewBag.idSesion" />
+    </div>
+</div>

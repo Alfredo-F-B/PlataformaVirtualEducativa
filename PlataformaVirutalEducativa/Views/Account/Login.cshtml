@@ -1,0 +1,64 @@
+﻿@model PlataformaVirutalEducativa.Models.LoginModel
+
+@{
+    ViewBag.Title = "INICIAR SESION";
+}
+
+<hgroup class="registrarse">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<section id="loginForm">
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset class="contenidofor">
+        <b  class="titulofor">Utilice una cuenta local para iniciar sesión.</b>
+        <legend>Formulario de inicio de sesión</legend>
+        <div class="formulacuenta">
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName)
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </li>
+            </ul>
+
+            <ul>
+                <li>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                </li>
+            </ul>
+        </div>
+        <ol class="registrarse"><input type="submit" value="Iniciar sesión" /></ol>
+        <div>
+            <p class="parrafo">
+                ¿No dispone de una cuenta?
+            </p>
+            <p class="parrafo">
+                @Html.ActionLink("Registrese Aqui", "Register")
+            </p>
+        </div>
+    </fieldset>
+}
+</section>
+
+<section class="imagenlogin">
+    <p class="parrafo">
+          PLATAFORMA VIRTUAL EDUCATIVA
+     </p>
+    <img src="/images/login.jpg">
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
